@@ -1,18 +1,19 @@
 const path = require('path');
 
 module.exports ={
-   entry: path.resolve(__dirname, 'src', 'index.js'),
+   mode: 'development',
+   entry: path.resolve(__dirname, 'src', 'App.ts'),
    output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js'
    },
    resolve: {
-      extensions: ['.js', '.jsx', '.ts'],
+      extensions: ['.js', '.ts'],
    },
    module: {
       rules: [
          {
-            test: /\.js$/,
+            test: /\. (j|t)s$/,
             exclude: /node_modules/,
             use: 'babel-loader',
          }
