@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/App.ts":
+/***/ "./src/App.js":
 /*!********************!*\
-  !*** ./src/App.ts ***!
+  !*** ./src/App.js ***!
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Aluno)\n/* harmony export */ });\n// interface IAluno {\r\n//   name: string;\r\n//   email: string;\r\n//   age: number;\r\n// }\r\n\r\nclass Aluno {\r\n  state;\r\n\r\n  constructor()\r\n  {\r\n    this.state = 0;\r\n  }\r\n\r\n}\n\n//# sourceURL=webpack://padrao-projeto-observer/./src/App.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Aluno)\n/* harmony export */ });\n// interface IAluno {\r\n//   name: string;\r\n//   email: string;\r\n//   age: number;\r\n// }\r\n\r\nclass Aluno {\r\n  state;\r\n  constructor()\r\n  {\r\n    this.state = 0;\r\n  }\r\n\r\n}\n\n//# sourceURL=webpack://padrao-projeto-observer/./src/App.js?");
 
 /***/ })
 
@@ -60,7 +60,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/App.ts"](0, __webpack_exports__, __webpack_require__);
+/******/ 	__webpack_modules__["./src/App.js"](0, __webpack_exports__, __webpack_require__);
 /******/ 	
 /******/ })()
 ;
