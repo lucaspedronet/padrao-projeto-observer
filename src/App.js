@@ -1,10 +1,18 @@
-class Observable {
+interface IAluno {
+  name: string;
+  email: String;
+  age: number;
+}
+
+class Aluno {
   constructor() {
     this.observers = [];
+
   }
 
   subscribe(f) {
     this.observers.push(f);
+
   }
 
   unsubscribe(f) {
@@ -16,36 +24,35 @@ class Observable {
   }
 }
 
-const input = document.querySelector('.js-input');
+const name = document.querySelector('#name');
+const email = document.querySelector('#email');
+const number = document.querySelector('#number');
 
-const p1 = document.querySelector('.js-p1');
-const p2 = document.querySelector('.js-p2');
-const p3 = document.querySelector('.js-p3');
+const salvar = document.querySelector('#salvar');
+
+const aluno1: IAluno = {
+  name,
+  email,
+  number,
+};
+
+console.log(aluno1)
+
 
 const subscribeP1 = document.querySelector('.js-subscribe-p1');
-const subscribeP2 = document.querySelector('.js-subscribe-p2');
-const subscribeP3 = document.querySelector('.js-subscribe-p3');
 
 const unsubscribeP1 = document.querySelector('.js-unsubscribe-p1');
-const unsubscribeP2 = document.querySelector('.js-unsubscribe-p2');
-const unsubscribeP3 = document.querySelector('.js-unsubscribe-p3');
 
-const updateP1 = text => p1.textContent = text;
-const updateP2 = text => p2.textContent = text;
-const updateP3 = text => p3.textContent = text;
+const updateP1 = text => aluno1.textContent = text;
 
-const headingsObserver = new Observable();
+const headingsObserver = new Aluno();
+
 headingsObserver.subscribe(updateP1);
-headingsObserver.subscribe(updateP2);
-headingsObserver.subscribe(updateP3);
 
 subscribeP1.addEventListener('click', () => headingsObserver.subscribe(updateP1));
 unsubscribeP1.addEventListener('click', () => headingsObserver.unsubscribe(updateP1));
-subscribeP2.addEventListener('click', () => headingsObserver.subscribe(updateP2));
-unsubscribeP2.addEventListener('click', () => headingsObserver.unsubscribe(updateP2));
-subscribeP3.addEventListener('click', () => headingsObserver.subscribe(updateP3));
-unsubscribeP3.addEventListener('click', () => headingsObserver.unsubscribe(updateP3));
 
+// deve modificar para o botão salvar
 input.addEventListener('keyup', e => {
   headingsObserver.notify(e.target.value);
 });

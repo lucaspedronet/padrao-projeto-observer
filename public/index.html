@@ -7,45 +7,35 @@
    <title>Cadastra Alunos</title>
    <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
-<script src="./dist/bundle.js"></script>
+<script src="../src/App.js"></script>
 
 <body>
    <div class="container">
 
       <div class="ctnr-cadastro">
-         <h2>Cadastra aluno</h2>
+         <h2>Sistema de escolar</h2>
          <form action="">
             <fieldset>
                <legend>Cadastro de alunos</legend>
                <label for="name">Nome completo</label>
                <br>
                <input type="text" id="name" name="name" class="input" placeholder="Ex: João bernado">
-               <br>
-               <br>
                <label for="email">E-mail</label>
                <br>
                <input type="email" id="email" name="email" class="input" placeholder="Ex: joao@gmail.com">
+               <label for="age">Idade</label>
                <br>
-               <br>
-               <input type="number" class="input" placeholder="Sua idade">
+               <input type="number" id="age" name="age" class="input" placeholder="Sua idade">
                <div>
                   <button type="submit">Salvar</button>
                </div>
             </fieldset>
          </form>
-      </div>
-
-   
+      </div>   
    
       <button class="js-subscribe-p1">Subscribe</button>
       <button class="js-unsubscribe-p1">Unsubscribe</button>
       <p class="js-p1"></p>
-      <button class="js-subscribe-p2">Subscribe</button>
-      <button class="js-unsubscribe-p2">Unsubscribe</button>
-      <p class="js-p2"></p>
-      <button class="js-subscribe-p3">Subscribe</button>
-      <button class="js-unsubscribe-p3">Unsubscribe</button>
-      <p class="js-p3"></p>
    
       <table>
          <h3>Alunos inscritos</h3>
