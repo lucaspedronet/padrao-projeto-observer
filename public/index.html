@@ -10,56 +10,39 @@
 <script src="../dist/bundle.js"></script>
 
 <body>
-   <div class="container">
-
+   <div class="container" >
       <div class="ctnr-cadastro">
          <h2>Sistema de escolar</h2>
-         <form action="">
-            <fieldset>
-               <legend>Cadastro de alunos</legend>
-               <label for="name">Nome completo</label>
-               <br>
-               <input type="text" id="name" name="name" class="input" placeholder="Ex: João bernado">
-               <label for="email">E-mail</label>
-               <br>
-               <input type="email" id="email" name="email" class="input" placeholder="Ex: joao@gmail.com">
-               <label for="age">Idade</label>
-               <br>
-               <input type="number" id="age" name="age" class="input" placeholder="Sua idade">
-               <div>
-                  <button type="submit" id="salve">Salvar</button>
-               </div>
-            </fieldset>
+         <form action="" method="post" onsubmit="return salvar(this)">
+            <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+
+                  <label for="name">Nome</label>
+                  <input type="text" class="form-control" id="name">
+
+                  <label for="date" >Idade</label>
+                  <input type="date" name="date" class="form-control" id="date">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
          </form>
-      </div>
-      
-      <p class="js-p1"></p>
-   
+      </div>   
+
       <table>
          <h3>Alunos inscritos</h3>
          <thead>
             <tr>
-               <th>Nome</th>
-               <th>e-mail</th>
-               <th>Idade</th>
+                  <th>Nome</th>
+                  <th>e-mail</th>
+                  <th>Idade</th>
             </tr>
          </thead>
-         <tbody>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
+         <tbody id='list'>
+<!--                 <tr class="tr-line">
+                  <td>Lucas Pedro</td>
+                  <td>lucaspedro@gmail.com</td>
+                  <td>21</td>
+            </tr> -->
          </tbody>
       </table>
    </div>
