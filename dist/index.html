@@ -6,63 +6,110 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Cadastra Alunos</title>
    <link rel="stylesheet" type="text/css" href="./styles.css">
+   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
    <script defer src="bundle.js"></script>
 </head>
 <!-- <script src="../dist/bundle.js"></script> -->
 
-<body>
-   <div class="container">
+<body class=" bg-dark">
+<div class="container ">
+      <div class="py-5 text-center text-light">
+         <!-- <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+         <h2>Titulo</h2>
+         <p class="lead">Descrição aqui!</p>
+      </div>
 
-      <div class="ctnr-cadastro">
-         <h2>Sistema de escolar</h2>
-         <form action="">
-            <fieldset>
-               <legend>Cadastro de alunos</legend>
-               <label for="name">Nome completo</label>
-               <br>
-               <input type="text" id="name" name="name" class="input" placeholder="Ex: João bernado">
-               <label for="email">E-mail</label>
-               <br>
-               <input type="email" id="email" name="email" class="input" placeholder="Ex: joao@gmail.com">
-               <label for="age">Idade</label>
-               <br>
-               <input type="number" id="age" name="age" class="input" placeholder="Sua idade">
-               <div>
-                  <button type="submit">Salvar</button>
-               </div>
-            </fieldset>
-         </form>
+      <div class="row">
+<!-- Lista-alunos -->
+         <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Alunos cadastrados</span>
+                  <span class="badge badge-secondary badge-pill" id="cont-aluno">0</span>
+            </h4>
+            <ul class="list-group mb-3 mt-5" id='lista-alunos'>
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                     <span class="text-muted ">Não á alunos cadastrados!</span>
+                  </li>
+            </ul>
+         </div>
+<!-- End-Lista-alunos -->
+
+         <div class="col-md-8 order-md-1 text-light">
+<!-- Form-alunos -->
+            <h4 class="mb-3">Dados do Aluno</h4>
+            <form class="needs-validation" onsubmit="return salvar(this)">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="fullname">Nome</label>
+                        <input type="name" class="form-control" id="fullname" placeholder="Nome completo">
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="date">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="date">
+                     </div>
+                  </div>    
+                  <div class="mb-3">
+                     <label for="email">E-mail</label>
+                     <div class="input-group">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                     </div>
+                        <input type="email" class="form-control" id="email" placeholder="E-mail">
+                     </div>
+                  </div>
+                  <button class="btn btn-primary btn-lg btn-block" >Adicionar</button>
+            </form>
+<!-- End-Form-alunos -->
+            <hr class="hr-light">
+<!-- Estatiticas-alunos -->
+            <div class="pt-2 mx-auto mb-5 mb-lg-0 ms-lg-0 me-xl-7 text-center text-lg-start">
+                  <h1 class="display-4 pb-2">Estatísticas</h1>
+                  <p class="h5 line-height-base">Texto explicando.</p>
+                  <hr class="hr-light mt-0 mb-5">
+                  <div class="row mb-5">
+                     <div class="col">
+                        <div class="h5 mb-1">Fulano de tal</div>
+                        <div class="h5 mb-1 text-muted text-capitalize">Adiconado recente</div>
+                     </div>
+
+                     <div class="col">
+                        <div class="h5 mb-1">Fulano de tal</div>
+                        <div class="h5 mb-1 text-muted text-capitalize">Adiconado recente</div>
+                     </div>
+                  </div>
+                  <hr class="hr-light mt-0 mb-5">
+                  <div class="row">
+                     <div class="col-sm-4 mb-4 mb-sm-0">
+                        <div class="h1 mb-1">20</div>
+                        <div class="h5 mb-2 text-muted text-capitalize">Media por idade</div>
+                     </div>
+                     <div class="col-sm-4 mb-4 mb-sm-0">
+                        <div class="h1 mb-1">22</div>
+                        <div class="h5 mb-1 text-muted text-capitalize">Alunos mais velho</div>
+                     </div>
+                     <div class="col-sm-4">
+                        <div class="h1 mb-1">18</div>
+                        <div class="h5 mb-1 text-muted text-capitalize">Aluno mais novo</div>
+                     </div>
+                  </div>
+                  
+            </div>
+<!-- End-Estatiticas-alunos -->
+            
+         </div>
       </div>
       
-      <p class="js-p1"></p>
-   
-      <table>
-         <h3>Alunos inscritos</h3>
-         <thead>
-            <tr>
-               <th>Nome</th>
-               <th>e-mail</th>
-               <th>Idade</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
-            <tr class="tr-line">
-               <td>Lucas Pedro</td>
-               <td>lucaspedro@gmail.com</td>
-               <td>21</td>
-            </tr>
-         </tbody>
-      </table>
-   </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+         <p class="mb-1">© 2021 Atividade Arquitetura de Software</p>
+         <ul class="list-inline">
+            <li class="list-inline-item"><a href="http://instagram.com/_cleiton_Luiz_" target="blanck">@_cleiton_Luiz_</a></li>
+            <li class="list-inline-item"><a href="http://instagram.com/@" target="blanck">@Fulano</a></li>
+            <li class="list-inline-item"><a href="http://instagram.com/@" target="blanck">@Beltrano</a></li>
+            <li class="list-inline-item"><a href="http://instagram.com/@" target="blanck">@Sicrano</a></li>
+         </ul>
+      </footer>
+</div>
 </body>
 </html>
