@@ -1,29 +1,57 @@
-
-
-export default class Aluno {
-  constructor() {
-    this.observers = [];
+class Subject {
+  constructor(){
+      this.alunos = []
+      this.lista = []
   }
-  
-  subscribe(f) 
-  {
-    this.observers.push(f);
+  subscribe(event){
+      this.lista.push(event)
   }
-
-  unsubscribe(f)
-  {
-    this.observers = this.observers.filter(subscriber => subscriber !== f);
+  unsubscribe(event){
+      this.lista.slice(this.lista.indexOf(event),1)
   }
-
-  notify(data) {
-    this.observers.forEach(observer => observer(data));
+  adicionarAluno(res){
+      this.alunos.push(res)
+      this.notify()
   }
-
-  
+  notify() {
+      this.lista.forEach(element => {
+          element.update(this.alunos)
+      });
+  }
 }
 
-const name = document.getElementById("#name");
-const email = document.getElementById("#email");
-const age = document.getElementById("#age");
+class AlunosObs {
+  constructor(nome) {
+      this.nome = nome
+  }
+  update(dados){
+      let tabela = ''
+      for (var i of dados){
+          tabela += `
+          <tr class="tr-line">
+              <td>`+i.name+`</td>
+          </tr>
+          `
+      }
 
-const salve = document.getElementById("#salve");
+      document.getElementById('list').innerHTML = tabela
+  }
+}
+
+
+let obs = new Subject();
+
+let aluno = new AlunosObs();
+
+obs.subscribe(aluno)
+
+
+function salvar(res) {
+  const name = res.name.value;
+  const email = res.email.value;
+  const date = res.date.value;
+  const aluno = {name, email, date}
+  console.log(aluno)
+  obs.adicionarAluno(aluno)
+  return false;
+};
