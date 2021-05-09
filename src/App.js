@@ -1,6 +1,6 @@
-function calculaIdade(data) { 
+function calculaIdade(res){ 
     let dataAtual = new Date();
-    let dataNasc = new Date(data);
+    let dataNasc = new Date(res);
     let anoAtual = dataAtual.getFullYear();
     
     let diaNasc = dataNasc.getDate();
@@ -21,9 +21,8 @@ function calculaIdade(data) {
         }
     } 
     return idade; 
-};
-
-class Subject {
+}
+class AlunosSubject {
     constructor(){
         this.alunos = []
         this.lista = []
@@ -32,7 +31,7 @@ class Subject {
         this.lista.push(event)
     }
     unsubscribe(event){
-        this.lista.slice(this.lista.indexOf(event),1)
+        this.lista.splice(this.lista.indexOf(event),1)
     }
     adicionarAluno(res){
         this.alunos.push(res)
@@ -45,10 +44,11 @@ class Subject {
     }
 }
 
-class AlunosObs {
+class ViewAlunosObs {
     constructor(nome) {
         this.nome = nome
     }
+    
     update(dados){
         let tabela = ''
         for (var i of dados){
@@ -58,9 +58,8 @@ class AlunosObs {
                 <h6 class="my-0 text-truncate" style="width: 190px;">Nome: `+ i.name +`</h6>
                 <small class="text-muted">`+ i.email+`</small>
                 </div>
-                <div >
-                    <span class="text-muted">Idade</span><br>
-                    <span class="text-muted text-center">`+ calculaIdade(i.date) +`</span>
+                <div class="text-center">
+                    <span class="text-muted text-center">Idade: `+ calculaIdade(i.date) +`</span>
                 </div>
             </li>
             `
@@ -71,20 +70,87 @@ class AlunosObs {
     }
 }
 
+class EstatisticaObs {
+    constructor(nome){
+        this.nome = nome;
+    }
+    getMaisNovo(res){
+        let maisNovo = {}
+        let idadeN = 999
+        res.forEach(element => {
+            const idade = calculaIdade(element.date)
+            if(idade < idadeN){
+                idadeN = idade
+                maisNovo = element
+            }
+        })
+        return maisNovo
+    }
+    getMaisVelho(res){
+        let maisVelho = {}
+        let idadeN = 0
+        res.forEach(element => {
+            const idade = calculaIdade(element.date)
+            if(idade > idadeN){
+                idadeN = idade
+                maisVelho = element
+            }
+        })
+        return maisVelho
+    }
+    getMedia(res){
+        let media = 0;
+        res.forEach(element =>{
+            media+=calculaIdade(element.date)
+        })
+        return Math.round(media/res.length)
+    }
+    update(res){
+        let media = this.getMedia(res)
+        let maisVelho = this.getMaisVelho(res)
+        let maisNovo = this.getMaisNovo(res)
+        let recente = res[res.length-1]
+        let antigo = res[0]
 
-let obs = new Subject();
+        let HTMLantigo = `<div class="text-muted" id="antigo">
+            <p class="small mb-0 mt-2"><strong>Nome: <span class="font-italic">`+ antigo.name+`</span></strong></p>
+            <p class="small mb-0 "> Email: <span class="font-italic">`+ antigo.email +`</span></p>
+            <p class="small">Data Nascimento: <span class="font-italic">`+ antigo.date+`</span></p>
+        </div>
+        `;
+        let HTMLrecente = `<div class="text-muted" id="recente">
+            <p class="small mb-0 mt-2"><strong>Nome: <span class="font-italic">`+ recente.name+`</span></strong></p>
+            <p class="small mb-0 "> Email: <span class="font-italic">`+ recente.email +`</span></p>
+            <p class="small">Data Nascimento: <span class="font-italic">`+ recente.date+`</span></p>
+        </div>
+        `;
 
-let aluno = new AlunosObs();
-
-obs.subscribe(aluno)
 
 
-function salvar(res) {
+
+        document.getElementById("media").innerHTML = media+' <small class="text-muted m-0">Anos</small>';
+        document.getElementById("maisVelho").innerHTML = calculaIdade(maisVelho.date);
+        document.getElementById("maisNovo").innerHTML = calculaIdade(maisNovo.date)
+        document.getElementById("maisRecente").innerHTML = HTMLrecente;
+        document.getElementById("maisAntigo").innerHTML = HTMLantigo;
+    }
+}
+
+
+let obs = new AlunosSubject();
+let aluno = new ViewAlunosObs("Alunos");
+let estatistica = new EstatisticaObs("Estatistica")
+
+
+obs.subscribe(aluno);
+obs.subscribe(estatistica);
+
+function cadastrar(res) {
     const name = res.fullname.value;
     const email = res.email.value;
     const date = res.date.value;
-    const aluno = {name, email, date}
-    console.log(aluno)
-    obs.adicionarAluno(aluno)
+    obs.adicionarAluno({name, email, date})
+
+    res.reset()
     return false;
 };
