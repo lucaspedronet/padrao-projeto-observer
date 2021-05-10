@@ -81,7 +81,7 @@ var StudentSubject = /*#__PURE__*/function () {
     key: "addStudent",
     value: function addStudent(res) {
       console.log(res);
-      this.students.push(res);
+      this.students.unshift(res);
       this.notify();
     }
   }, {
@@ -128,15 +128,7 @@ var StudentObserve = /*#__PURE__*/function (_StudentSubject) {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var i = _step.value;
           tabela += "\n           <li class=\"list-group-item d-flex justify-content-between lh-condensed\">\n               <div>\n               <h6 class=\"my-0 text-truncate\" style=\"width: 190px;\">Nome: " + i.name + "</h6>\n               <small class=\"text-muted\">" + i.email + "</small>\n               </div>\n               <div class=\"text-center\">\n                   <span class=\"text-muted text-center\">Idade: " + calculateAge(i.date) + "</span>\n               </div>\n           </li>\n           ";
-        } //    const subscribersStudents = document.getElementById('subscribers-students');
-        //    const countStudent = document.getElementById("cont-aluno");
-        //    console.log(subscribersStudents)
-        //    console.log(countStudent)
-        //    subscribersStudents.innerHTML = tabela;
-        //    countStudent.innerHTML = dados.length;
-        //    subscribersStudents !== null ? subscribersStudents.innerHTML = tabela : subscribersStudents;
-        //    countStudent !== null ? countStudent.innerHTML = dados.length : countStudent;
-
+        }
       } catch (err) {
         _iterator.e(err);
       } finally {

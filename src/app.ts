@@ -65,7 +65,7 @@ class StudentSubject {
     public addStudent(res)
     {
         console.log(res)
-        this.students.push(res)
+        this.students.unshift(res)
         this.notify()
     }
 
