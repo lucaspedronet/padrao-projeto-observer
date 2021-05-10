@@ -6,18 +6,15 @@ interface IForm {
     reset(): void;
 }
 
-interface StudentSubject {
+interface IStudentSubject {
     subscribe(event: StudentObserve | StatisticObserve): void;
-    update(data: StudentObserve): void;
-    update(data: StudentObserve): void;
-    update(data: StudentObserve): void;
 }
 
 type value = { value: string; }
 
 type studentSubject = { value: string; }
 
-function calculateAge(res){ 
+function calculateAge(res: Date){ 
    let currentDate = new Date();
    let birthDate = new Date(res);
    let currentYear = currentDate.getFullYear();
@@ -44,7 +41,7 @@ function calculateAge(res){
 }
 
 
-class StudentSubject implements StudentSubject {
+class StudentSubject {
     public students: [];
     
     public subscribers: Array<StudentObserve | StatisticObserve>[];
@@ -55,17 +52,17 @@ class StudentSubject implements StudentSubject {
         this.subscribers = [];
     }
    
-    private subscribe(event): void
+    public subscribe(event): void
     {
         this.subscribers.push(event)
     }
     
-    private unsubscribe(event)
+    public unsubscribe(event)
     {
         this.subscribers.splice(this.subscribers.indexOf(event),1)
     }
    
-    private addStudent(res)
+    public addStudent(res)
     {
         console.log(res)
         this.students.push(res)
@@ -103,18 +100,6 @@ class StudentObserve extends StudentSubject  {
            `
        }
 
-    //    const subscribersStudents = document.getElementById('subscribers-students');
-    //    const countStudent = document.getElementById("cont-aluno");
-
-    //    console.log(subscribersStudents)
-    //    console.log(countStudent)
-
-    //    subscribersStudents.innerHTML = tabela;
-    //    countStudent.innerHTML = dados.length;
-
-    //    subscribersStudents !== null ? subscribersStudents.innerHTML = tabela : subscribersStudents;
-    //    countStudent !== null ? countStudent.innerHTML = dados.length : countStudent;
-
        document.getElementById('lista-alunos').innerHTML = tabela
        document.getElementById("cont-aluno").innerHTML = dados.length
    }
@@ -128,7 +113,8 @@ class StatisticObserve {
        this.name = name;
    }
 
-   youngerStudent(res){
+   youngerStudent(res)
+   {
        let maisNovo = {}
        let ageN = 999
        res.forEach(element => {
@@ -141,7 +127,8 @@ class StatisticObserve {
        return maisNovo
    }
 
-   olderStudent(res){
+   olderStudent(res)
+   {
        let maisVelho = {}
        let ageN = 0
        res.forEach(element => {
@@ -153,6 +140,7 @@ class StatisticObserve {
        })
        return maisVelho
    }
+   
    median(res){
        let media = 0;
        res.forEach(element =>{

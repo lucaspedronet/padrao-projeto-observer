@@ -127,7 +127,7 @@ var StudentObserve = /*#__PURE__*/function (_StudentSubject) {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var i = _step.value;
-          tabela += "\n           <li class=\"list-group-item d-flex justify-content-between lh-condensed\">\n               <div>\n               <h6 class=\"my-0 text-truncate\" style=\"width: 190px;\">Nome: " + i.name + "</h6>\n               <small class=\"text-muted\">" + i.email + "</small>\n               </div>\n               <div class=\"text-center\">\n                   <span class=\"text-muted text-center\">age: " + calculateAge(i.date) + "</span>\n               </div>\n           </li>\n           ";
+          tabela += "\n           <li class=\"list-group-item d-flex justify-content-between lh-condensed\">\n               <div>\n               <h6 class=\"my-0 text-truncate\" style=\"width: 190px;\">Nome: " + i.name + "</h6>\n               <small class=\"text-muted\">" + i.email + "</small>\n               </div>\n               <div class=\"text-center\">\n                   <span class=\"text-muted text-center\">Idade: " + calculateAge(i.date) + "</span>\n               </div>\n           </li>\n           ";
         } //    const subscribersStudents = document.getElementById('subscribers-students');
         //    const countStudent = document.getElementById("cont-aluno");
         //    console.log(subscribersStudents)
